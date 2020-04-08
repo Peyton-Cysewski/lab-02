@@ -9,7 +9,7 @@ function main(fileList) {
   hornsCatalog.forEach(hornPic => {hornPic.render()});
   addSelectOptions();
   selectFilter();
-  $('select').on('click', function() {console.log(this.type)});
+  // $('select').on('click', function() {console.log(this.type)});
 }
 
 // Functions for the page
