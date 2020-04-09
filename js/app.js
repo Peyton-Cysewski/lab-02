@@ -16,16 +16,23 @@ $('#previous').on('click', () => {
   fireAjax();
 });
 
+// ajax call
+function fireAjax() {
+  $.ajax(`../data/page-${pageNum}.json`).then(ajaxCallback);
+}
+fireAjax(pageNum);
+
 // all the functions, run thorugh ajax
-function ajaxCallback(fileList) {
+function ajaxCallback(file) {
   $('#currentPage').text(pageNum);
   hornsCatalog = [];
   $('select').empty();
   $('main').empty();
-  fileList.forEach(makeHornsObjects);
+  file.forEach(makeHornsObjects);
   hornsCatalog.forEach(hornPic => {hornPic.render()});
   addSelectOptions();
   selectFilter();
+  sorter();
 }
 
 // Functions for the page
@@ -46,8 +53,8 @@ HornsObject.prototype.addToCatalog = function() {
 
 HornsObject.prototype.render = function() {
   const template = $('#hornTemplate').html();
-  let filled = Mustache.render(template, this);
-  $('main').append(filled);
+  let filledTemplate = Mustache.render(template, this);
+  $('main').append(filledTemplate);
 }
 
 function makeHornsObjects(item) {
@@ -83,8 +90,6 @@ function selectFilter() {
     })
   }
 
-  // ajax call
-function fireAjax() {
-  $.ajax(`../data/page-${pageNum}.json`).then(ajaxCallback);
-}
-fireAjax(pageNum);
+  function sorter() {
+    
+  }
