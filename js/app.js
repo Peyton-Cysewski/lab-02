@@ -1,15 +1,38 @@
 "use strict";
 
+// Page Specifier
+let pageNum = 1;
+$('#currentPage').text(pageNum);
+
+//Page Button Listeners
+$('#next').on('click', () => {
+  pageNum++
+  fireAjax();
+});
+
+$('#previous').on('click', () => {
+  pageNum--
+  console.log(pageNum);
+  fireAjax();
+});
+
 // ajax call
-$.ajax('../data/page-1.json').then(main);
+function fireAjax() {
+  $.ajax(`../data/page-${pageNum}.json`).then(ajaxCallback);
+}
+fireAjax(pageNum);
 
 // all the functions, run thorugh ajax
-function main(fileList) {
-  fileList.forEach(makeHornsObjects);
+function ajaxCallback(file) {
+  $('#currentPage').text(pageNum);
+  hornsCatalog = [];
+  $('select').empty();
+  $('main').empty();
+  file.forEach(makeHornsObjects);
   hornsCatalog.forEach(hornPic => {hornPic.render()});
   addSelectOptions();
   selectFilter();
-  // $('select').on('click', function() {console.log(this.type)});
+  sorter();
 }
 
 // Functions for the page
@@ -29,13 +52,9 @@ HornsObject.prototype.addToCatalog = function() {
 }
 
 HornsObject.prototype.render = function() {
-  $('#photo-template').append(`
-  <a class="${this.keyword}">
-  <h2>${this.title}</h2>
-  <img src="${this.image_url}">
-  <p>${this.description}</p>
-  </a>
-  `)
+  const template = $('#hornTemplate').html();
+  let filledTemplate = Mustache.render(template, this);
+  $('main').append(filledTemplate);
 }
 
 function makeHornsObjects(item) {
@@ -57,19 +76,20 @@ function addSelectOptions() {
     })
     if (matching === false) { selectOptions.push(item.keyword)    }
   })
+  $('select').append('<option value="default">Filter by Keyword</option>')
   selectOptions.forEach(value => {
-    $('select').append(`<option>${value}</option`)
+    $('select').append(`<option value="${value}">${value}</option`)
   })
 }
 
 function selectFilter() {
-  let click = 0;
-  $('select').on('click', function() {
-    click++
-    if (click % 2 === 0) {
-      $('a').hide();
-      $(`.${this.value}`).show();
-    }
-    console.log(this.value);
-  })
-}
+  $('select').on('change', function(e) {
+    console.log(e.target.value);
+      $('section').hide();
+      $(`.${e.target.value}`).show();
+    })
+  }
+
+  function sorter() {
+    
+  }
