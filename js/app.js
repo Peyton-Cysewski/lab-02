@@ -18,7 +18,7 @@ $('#previous').on('click', () => {
 
 // ajax call
 function fireAjax() {
-  $.ajax(`data/page-${pageNum}.json`).then(ajaxCallback);
+  $.ajax(`../data/page-${pageNum}.json`).then(ajaxCallback);
 }
 fireAjax(pageNum);
 
