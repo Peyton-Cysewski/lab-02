@@ -25,6 +25,7 @@ fireAjax(pageNum);
 // all the functions, run thorugh ajax
 function ajaxCallback(file) {
   $('#currentPage').text(pageNum);
+  $('#titleSort').attr('checked', true);
   hornsCatalog = [];
   $('select').empty();
   $('main').empty();
@@ -85,10 +86,16 @@ function addSelectOptions() {
 function selectFilter() {
   $('select').on('change', function(e) {
     console.log(e.target.value);
+    if (e.target.value === 'default') {
+      $('section').show();
+    } else {
       $('section').hide();
       $(`.${e.target.value}`).show();
-    })
-  }
+    }
+    $('#titleSort').attr('checked', false);
+    $('#hornSort').attr('checked', false);
+  })
+}
 
 function sorter() {
   if ($('#titleSort').prop('checked')) {
@@ -109,10 +116,10 @@ function sorter() {
   
   // re-rendering the page
   $('main').empty();
+  $('select').empty();
+  addSelectOptions();
   hornsCatalog.forEach(hornPic => {hornPic.render()});
 }
-  
-$('.sort').on('click', sorter);
 
-let test = $('#titleSort').prop('checked');
-console.log(test);
+// Sort Function Listener
+$('.sort').on('click', sorter);
