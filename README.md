@@ -14,26 +14,26 @@ Actual time needed to complete: 1hr 43min
 
 # Lab-03
 
-Number and name of feature: Pagination
+Number and name of feature: #1 Pagination
 Estimate of time needed to complete: 2hrs
 Start time: 9:30am
 Finish time: 11:37am
 Actual time needed to complete: 2hrs 7min
 
-Number and name of feature: Templating
+Number and name of feature: #2 Templating
 Estimate of time needed to complete: 45mins
 Start time: 11:38am
 Finish time: 12:16pm
 Actual time needed to complete: 38mins
 
-Number and name of feature: ________________________________
+Number and name of feature: #3 Styling
 Estimate of time needed to complete: _____
 Start time: _____
 Finish time: _____
-Actual time needed to complete: _____
+Actual time needed to complete: 2hrs
 
-Number and name of feature: Sort Feature
+Number and name of feature: #4 Sort Feature
 Estimate of time needed to complete: 45mins
 Start time: _____
 Finish time: _____
-Actual time needed to complete: _____
+Actual time needed to complete: 1hr 30mins

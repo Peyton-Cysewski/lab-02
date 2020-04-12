@@ -25,6 +25,7 @@ fireAjax(pageNum);
 // all the functions, run thorugh ajax
 function ajaxCallback(file) {
   $('#currentPage').text(pageNum);
+  $('#titleSort').attr('checked', true);
   hornsCatalog = [];
   $('select').empty();
   $('main').empty();
@@ -85,11 +86,40 @@ function addSelectOptions() {
 function selectFilter() {
   $('select').on('change', function(e) {
     console.log(e.target.value);
+    if (e.target.value === 'default') {
+      $('section').show();
+    } else {
       $('section').hide();
       $(`.${e.target.value}`).show();
+    }
+    $('#titleSort').attr('checked', false);
+    $('#hornSort').attr('checked', false);
+  })
+}
+
+function sorter() {
+  if ($('#titleSort').prop('checked')) {
+    hornsCatalog.sort( (a,b) => {
+      if (a.title > b.title) {
+        return 1;
+      } else if (a.title < b.title) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })
+  } else { //if ($('hornSort').prop('checked')) {
+    hornsCatalog.sort( (a,b) => {
+      return a.horns - b.horns;
     })
   }
+  
+  // re-rendering the page
+  $('main').empty();
+  $('select').empty();
+  addSelectOptions();
+  hornsCatalog.forEach(hornPic => {hornPic.render()});
+}
 
-  function sorter() {
-    
-  }
+// Sort Function Listener
+$('.sort').on('click', sorter);
