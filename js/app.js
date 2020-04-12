@@ -90,6 +90,29 @@ function selectFilter() {
     })
   }
 
-  function sorter() {
-    
+function sorter() {
+  if ($('#titleSort').prop('checked')) {
+    hornsCatalog.sort( (a,b) => {
+      if (a.title > b.title) {
+        return 1;
+      } else if (a.title < b.title) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })
+  } else { //if ($('hornSort').prop('checked')) {
+    hornsCatalog.sort( (a,b) => {
+      return a.horns - b.horns;
+    })
   }
+  
+  // re-rendering the page
+  $('main').empty();
+  hornsCatalog.forEach(hornPic => {hornPic.render()});
+}
+  
+$('.sort').on('click', sorter);
+
+let test = $('#titleSort').prop('checked');
+console.log(test);
