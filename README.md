@@ -30,10 +30,10 @@ Number and name of feature: #3 Styling
 Estimate of time needed to complete: _____
 Start time: _____
 Finish time: _____
-Actual time needed to complete: _____
+Actual time needed to complete: 2hrs
 
 Number and name of feature: #4 Sort Feature
 Estimate of time needed to complete: 45mins
 Start time: _____
 Finish time: _____
-Actual time needed to complete: _____
+Actual time needed to complete: 1hr 30mins
