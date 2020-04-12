@@ -4,14 +4,16 @@
     <title>The Gallery of Horns</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js"></script>
     <script id="hornTemplate" type="x-tmpl-mustache">
       <section class="{{keyword}}">
         <h2>{{title}}</h2>
         <img src="{{image_url}}">
-        <p>{{desccription}}</p>
+        <p>{{description}}</p>
       </section>
     </script>
   </head>

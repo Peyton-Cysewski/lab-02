@@ -1,0 +1,63 @@
+* {
+  color: white;
+  text-align: center;
+}
+
+body {
+  background-color: darkslategrey;
+}
+
+header {
+  padding: 30px 0;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+footer {
+  margin: 30px;
+}
+
+button {
+  color: black;
+}
+
+select {
+  color: black;
+  margin-top: 10px;
+}
+
+option {
+  color: black;
+}
+
+ section {
+   box-sizing: border-box;
+   width: 20%;
+   height: 30%;
+   border: darkturquoise solid 5px;
+   margin: 10px;
+   border-radius: 15px;
+ }
+
+h2 {
+  height: 25px;
+  line-height: 25px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 150px;
+  margin: 0 auto;
+}
+
+p {
+  padding: 10px;
+  width: fit-content;
+}
